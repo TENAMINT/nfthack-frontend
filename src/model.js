@@ -1,5 +1,7 @@
 import { action, thunk } from 'easy-peasy'
 
+import { userService } from './services/UserService';
+
 // We are using easy-peasy state management, doc here: https://easy-peasy.now.sh/
 export default {
     // States
@@ -8,8 +10,8 @@ export default {
         token: '123',
         fullName: "Victoria Robertson",
         email: 'victoria@gmail.com',
-        username: 'vicky5',
-        password: '123'
+        password: '123',
+        mnemonic: '',
     },
     profile: {
         mantra: 'A mantra goes here',
@@ -29,6 +31,37 @@ export default {
             }
         ]
     },
+
     // Thunks
+    registerUser: thunk(async (actions, payload, { getStoreState }) => {
+        const state = getStoreState();
+
+        const user = await userService.register({ step: 0, ...state.user });
+
+        actions.updateUser(user);
+    }),
+    registerWallet: thunk(async (actions, payload, { getStoreState }) => {
+        const state = getStoreState();
+
+        const user = await userService.register({ step: 1, ...state.user });
+
+        actions.updateUser(user);
+    }),
+
     // Actions
+    updateFullName: action((state, payload) => {
+        state.user.fullName = payload;
+    }),
+
+    updateEmail: action((state, payload) => {
+        state.user.email = payload;  
+    }),
+    updatePassword: action((state, payload) => {
+        state.user.password = payload;
+    }),
+
+    updateUser: action((state, payload) => {
+        console.log('USER', payload);
+        state.user = { ...payload };
+    }),
 }
