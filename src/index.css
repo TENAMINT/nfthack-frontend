@@ -68,3 +68,16 @@ input, textarea {
     -webkit-filter: invert(100%);
     filter: invert(100%);
 }
+
+/* UTILITIES */
+.w-300px {
+    width: 310px;
+}
+
+.w-500px {
+    width: 500px;
+}
+
+.w-600px {
+    width: 600px;
+}

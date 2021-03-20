@@ -1,17 +1,28 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useStoreState } from 'easy-peasy'
 
 const Navbar = () => {
     const [mobile, setMobile] = useState(false)
+    const user = useStoreState(state => state.user)
 
-    const getMobile = () => {
-        return (
-            <>
-                <Link className="nav-item" to='/'><div>Browse</div></Link>
-                <Link className="nav-item" to='/login'><div>Login</div></Link>
-                <Link className="nav-item" to='/sign-up'><div>Sign Up</div></Link>
-            </>
-        )
+    const getNav = () => {
+        if (!user.auth) {
+            return (
+                <>
+                    <Link className="nav-item" to='/'><div>Browse</div></Link>
+                    <Link className="nav-item" to='/login'><div>Login</div></Link>
+                    <Link className="nav-item" to='/sign-up'><div>Sign Up</div></Link>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Link className="nav-item" to='/profile'><div>Profile</div></Link>
+                    <Link className="nav-item" to='/submit-card'><div>Submit Card</div></Link>
+                </>
+            )
+        }
     }
 
     return (
@@ -23,11 +34,11 @@ const Navbar = () => {
                 </svg>
             </div>
             {mobile && (<div className="flex flex-col sm:hidden transition duration-500 mobile-nav absolute mt-5" onClick={()=>{setMobile(false)}}>
-                { getMobile() }
+                { getNav() }
             </div>)}
 
             <div className="hidden sm:inline-flex navbar flex flex-wrap flex-col sm:flex-row w-screen p-5 pr-10 justify-end">
-                { getMobile() }
+                { getNav() }
             </div>
         </>
     )

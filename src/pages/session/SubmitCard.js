@@ -9,7 +9,7 @@ const SubmitCard = () => {
         <input id="trackingNumber" name="trackingNumber" type="text" placeholder="Tracking Number" />
         <textarea id="cardDesc" name="cardDesc" rows="3" placeholder="Brief Description of Your Card" />
         <input id="promo" name="promo" type="text" placeholder="Promo" />
-        <div className="default-btn w-11/12 sm:w-1/3 mt-10 theme-color text-base sm:text-xl">Send</div>
+        <div className="default-btn w-11/12 sm:w-1/3 mt-4 theme-color text-base sm:text-xl">Send</div>
       </div>
   )
 }
