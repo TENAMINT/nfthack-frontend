@@ -8,12 +8,60 @@
     padding: 0;
 }
 
-html, body {
-    background-color: #08003a;
+/* GENERAL */
+
+.page-heading {
+    @apply text-4xl sm:text-6xl font-bold text-black p-4 tracking-tighter mb-2 sm:mb-4;
 }
 
+.theme-color {
+    background-color: #FFB84E;
+}
+
+.theme-text-color {
+    color: #FFB84E;
+}
+
+html, body {
+    background-color: white;
+}
+
+input, textarea {
+    background-color: #f8f8f8;
+}
+
+/* HOMEPAGE */
+.mast {
+    background-color: white;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    background-color: white;
+}
+
+.nav-item {
+    @apply hover:text-yellow-400 p-5 pr-4 pl-4 text-lg;
+}
+
+.mobile-nav {
+    @apply w-screen theme-color text-white p-1 text-center;
+}
+
+.mobile-nav > div {
+    @apply p-3;
+}
+
+/* SIGNUP */
+
+.input-container > input, textarea {
+    @apply text-black p-3 rounded sm:p-4 pl-7 pr-7 mt-2 w-11/12 sm:w-1/2;
+}
+
+/* WIDGETS */
 .default-btn {
-    @apply rounded-full p-5 text-white bg-blue-800 text-center text-xl uppercase font-bold hover:bg-blue-500 cursor-pointer;
+    @apply rounded-full p-3 sm:p-4 text-white text-center font-bold hover:bg-yellow-500 cursor-pointer;
 }
 
 .invert {

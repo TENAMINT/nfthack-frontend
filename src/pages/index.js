@@ -1,18 +1,15 @@
 import React from 'react'
+import Searchbar from "../components/Searchbar";
 
 const Index = () => {
     return (
-    <div className="flex justify-center h-screen items-center">
-      <div>
-          <img className="invert" src="https://img1.wsimg.com/isteam/ip/6c05e33d-031c-4c31-bc95-997f2c8a8ce3/2494706.svg/:/rs=w:365,h:274.4360902255639,cg:true,m/cr=w:365,h:274.4360902255639/fx-gs" />
-
-          <div id="price" className="text-white text-3xl text-center p-5">
-              0.0000
-          </div>
-
-          <div className="default-btn mt-3">Bid</div>
-          <div className="default-btn mt-3">Ask</div>
-      </div>
+    <div className="mast flex flex-col justify-center items-center">
+        <div className="text-center p-5 mt-16">
+          <h1 className="text-4xl sm:text-7xl font-bold tracking-tight">Buy & Sell</h1>
+          <h2 className="text-3xl sm:text-6xl font-bold mt-2.5 tracking-tight">Authentic Cards</h2>
+        </div>
+        <Searchbar width="w-10/12 sm:w-7/12"/>
+        <div className="theme-color p-7 w-screen mt-36 text-white" />
     </div>
   )
 }
