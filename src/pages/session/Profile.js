@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useStoreState } from 'easy-peasy'
+import { Link } from 'react-router-dom'
 
 import defaultDisplay from '../../images/default_display.jpg'
 
@@ -14,8 +15,8 @@ const Profile = () => {
 
     return (
         <>
-            <div className="input-container flex flex-col justify-center items-center mt-0">
-                <div className="w-300px sm:w-1/2">
+            <div className="input-container flex flex-col justify-center items-center sm:mt-0">
+                <div className="w-300px sm:w-1/2 ml-4 sm:ml-0">
                     <div id="settings" className="sm:inline-block text-gray-400 tracking-tight font-semibold w-16 sm:w-32 bg-white sm:pr-4 sm:pl-4 sm:pt-3 sm:pb-3 sm:rounded-full text-base sm:text-lg cursor-pointer sm:bg-gray-100 hover:bg-gray-300">
                         <div className="w-full sm:w-1/2">
                             <svg className="w-5/12 text-gray-400 float-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -31,7 +32,7 @@ const Profile = () => {
                     <img className="rounded-full"
                          src={user.display ? user.display : defaultDisplay} />
                 </div>
-                <h1 className="page-heading text-2xl sm:mb-0 sm:text-5xl">{ user.fullName }</h1>
+                <h1 className="page-heading text-2xl sm:mb-0 sm:text-5xl w-300px text-center sm:w-full">{ user.fullName }</h1>
                 <h2 className="text-xl sm:text-2xl">{ user.mantra }</h2>
 
                 <div className="flex flex-row justify-center align-middle flex-initial
@@ -65,7 +66,9 @@ const Profile = () => {
                                 <div>
                                     <div className="flex flex-row items-center justify-between sm:w-96">
                                         <div className="leading-2">
-                                            <h4 className="text-lg sm:text-xl font-semibold">{card.name}</h4>
+                                            <Link className="hover:text-yellow-400" to='/card-details'>
+                                                <h4 className="text-lg sm:text-xl font-semibold">{card.name}</h4>
+                                            </Link>
                                         </div>
                                         <div id="year" className="leading-2 text-gray-400 ml-4"> ({card.year})</div>
                                     </div>
