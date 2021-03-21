@@ -16,6 +16,7 @@ module.exports = {
             }
         },
         submit: async (card) => {
+          console.log('card: -----', card);
             const submitUrl = new URL('/card/submit', API_URL);
 
             const result = await fetch(submitUrl.href, {

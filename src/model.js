@@ -6,7 +6,7 @@ import { userService } from './services/UserService';
 export default {
     // States
     user: {
-        auth: false, /* prototype: will enable session navbar */
+        auth: true, /* prototype: will enable session navbar */
         token: '123',
         fullName: "Victoria Robertson",
         email: 'victoria@gmail.com',
@@ -47,6 +47,14 @@ export default {
             description: 'RC Rookie',
             gradeCompany: 'PSA',
             grade: 10,
+        },{
+            images:"https://dw7591lwb84er.cloudfront.net/eyJpdiI6IjZQNnRhSmxLS1J0QzI1N212VFlHbFE9PSIsInZhbHVlIjoiQTliV2lBTkljOWtLaGVBT0Z0cWEvazdPZ3V3YU50SnFUMGZiTHh3OWJMNW0xcXFKNXcrY1FLMEpLbWI0Q0xTeEZGb21PMEJoaThrYnplcVdUT1o4SFE9PSIsIm1hYyI6ImQzYWQ4ZTU3MzAzOTllZTY2MmQ5MWZmNmI5N2ZlNjFlODEzNzE4M2I3MGJjYjkxMmRkYmNkMWZhMTk3N2E1ZDMifQ==",
+            name: '1999 base 1st edition',
+            brand: 'Becket',
+            year: 1996,
+            description: 'Charizard',
+            gradeCompany: 'Beckett',
+            grade: 9.5
         }
     ],
 
