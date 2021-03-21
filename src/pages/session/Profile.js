@@ -43,14 +43,14 @@ const Profile = () => {
                                     ${cardsSelected ? 'bg-white' : 'text-gray-300'}`}
                         onClick={() => {setCardsSelected(true)}}
                     >
-                        Posts
+                        Portfolio
                     </div>
                     <div
                         className={`w-1/2 rounded-full p-3 sm:p-4 hover:bg-white hover:text-yellow-300 cursor-pointer
                                     ${!cardsSelected ? 'bg-white' : 'text-gray-300'}`}
                         onClick={() => {setCardsSelected(false)}}
                     >
-                        Portfolio
+                        History
                     </div>
                 </div>
                 {cardsSelected && (<div id="cards" className="feed mt-6 md:mt-8 sm:mt-8 w-300px sm:w-1/2">
@@ -78,7 +78,7 @@ const Profile = () => {
                         )
                     })}
                 </div>)}
-                {!cardsSelected && (<div id="photos" className="feed mt-6 sm:mt-8 w-300px sm:w-1/2 text-center">
+                {!cardsSelected && (<div id="history" className="feed mt-6 sm:mt-8 w-300px sm:w-1/2 text-center">
                     History
                 </div>)}
             </div>
