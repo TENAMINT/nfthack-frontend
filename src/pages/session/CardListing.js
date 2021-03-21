@@ -16,6 +16,11 @@ const Profile = () => {
         {card:{name:'result3'}},
     ]
 
+    const resultClick = (addr) => {
+        // populate state.selectedCard
+
+    }
+
     return (
         <>
             <div className="w-300px sm:w-1/2 m-auto">
@@ -31,7 +36,8 @@ const Profile = () => {
                                 className="font-semibold text-base sm:text-xl w-11/12 sm:w-full"
                                 key={index}>
                                 <Link className="hover:bg-gray-100 p-2 rounded-full"
-                                      to="/card-details">
+                                      to="/card-details"
+                                    onClick={()=>{resultClick(result.card.address)}}>
                                     {result.card.name}
                                 </Link>
                                 <hr className="p-2 mt-3"/>

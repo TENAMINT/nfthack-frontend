@@ -23,8 +23,18 @@ export default {
           grade: 10,
         },
     },
+    selectedCard: {
+        address: 0,
+        name: 'Tom Brady',
+        brand: 'Topps Collection',
+        year: 2003,
+        description: 'RC Rookie',
+        gradeCompany: 'PSA',
+        grade: 10,
+    },
     cards: [
         {
+            address: 0,
             name: 'Lebron James Cavaliers',
             brand: 'Topps Collection',
             year: 2003,
@@ -33,6 +43,7 @@ export default {
             grade: 10,
         },
         {
+            address: 1,
             name: 'Lebron James Cavaliers 2',
             brand: 'Topps Collection',
             year: 2003,
@@ -41,6 +52,7 @@ export default {
             grade: 10,
         },
         {
+            address: 2,
             name: 'Some random card here i dont know woah',
             brand: 'Topps Collection',
             year: 2003,
@@ -48,6 +60,7 @@ export default {
             gradeCompany: 'PSA',
             grade: 10,
         },{
+            address: 3,
             images:"https://dw7591lwb84er.cloudfront.net/eyJpdiI6IjZQNnRhSmxLS1J0QzI1N212VFlHbFE9PSIsInZhbHVlIjoiQTliV2lBTkljOWtLaGVBT0Z0cWEvazdPZ3V3YU50SnFUMGZiTHh3OWJMNW0xcXFKNXcrY1FLMEpLbWI0Q0xTeEZGb21PMEJoaThrYnplcVdUT1o4SFE9PSIsIm1hYyI6ImQzYWQ4ZTU3MzAzOTllZTY2MmQ5MWZmNmI5N2ZlNjFlODEzNzE4M2I3MGJjYjkxMmRkYmNkMWZhMTk3N2E1ZDMifQ==",
             name: '1999 base 1st edition',
             brand: 'Becket',
