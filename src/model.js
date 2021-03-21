@@ -12,6 +12,8 @@ export default {
         email: 'victoria@gmail.com',
         password: '123',
         mnemonic: '',
+        mantra: 'A mantra goes here',
+        display: '', /* profile pic */
         card: {
           name: 'Lebron James Cavaliers',
           brand: 'Topps Collection',
@@ -21,7 +23,24 @@ export default {
           grade: 10,
         },
     },
-    cards: [],
+    cards: [
+        {
+            name: 'Lebron James Cavaliers',
+            brand: 'Topps Collection',
+            year: 2003,
+            description: 'RC Rookie',
+            gradeCompany: 'PSA',
+            grade: 10,
+        },
+        {
+            name: 'Lebron James Cavaliers 2',
+            brand: 'Topps Collection',
+            year: 2003,
+            description: 'RC Rookie',
+            gradeCompany: 'PSA',
+            grade: 10,
+        }
+    ],
 
     // Thunks
     registerUser: thunk(async (actions, payload, { getStoreState }) => {
@@ -46,7 +65,7 @@ export default {
     }),
 
     updateEmail: action((state, payload) => {
-        state.user.email = payload;  
+        state.user.email = payload;
     }),
     updatePassword: action((state, payload) => {
         state.user.password = payload;
@@ -69,26 +88,26 @@ export default {
     }),
 
     updateCardName: action((state, payload) => {
-        state.user.card.name = payload;         
+        state.user.card.name = payload;
     }),
 
     updateCardBrand: action((state, payload) => {
-        state.user.card.brand = payload;         
+        state.user.card.brand = payload;
     }),
 
     updateCardYear: action((state, payload) => {
-        state.user.card.year = payload;         
+        state.user.card.year = payload;
     }),
 
     updateCardDescription: action((state, payload) => {
-        state.user.card.description = payload;         
+        state.user.card.description = payload;
     }),
 
     updateCardGradeCompany: action((state, payload) => {
-        state.user.card.gradeCompany = payload;         
+        state.user.card.gradeCompany = payload;
     }),
 
     updateCardGrade: action((state, payload) => {
-        state.user.card.grade = payload;         
+        state.user.card.grade = payload;
     }),
 }
