@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useStoreState } from 'easy-peasy'
+import React, { useState, useEffect } from 'react'
+import { useStoreState, useStoreActions } from 'easy-peasy'
 import { Link } from 'react-router-dom'
 import useSWR from 'swr'
 import defaultDisplay from '../../images/default_display.jpg'
@@ -9,12 +9,27 @@ const minExcerptChars = 80
 
 const Profile = () => {
     const user = useStoreState(state => state.user)
-    // const cards = useStoreState(state => state.cards)
+    const cards = useStoreState(state => state.cards)
 
-    const { data, error } = useSWR('http://127.0.0.1:5000/cards')
+    const execUser = useStoreActions(actions => actions.execUser);
+    const execCards = useStoreActions(actions => actions.execCards);
+    const setSelectedCard = useStoreActions(actions => actions.setSelectedCard);
+
+    const [cardsSelected, setCardsSelected] = useState(true)
+
+    useEffect(() => {
+        execUser({id:1})
+        execCards({})
+    }, [])
+
+    const selectCard = (card) => {
+        setSelectedCard(card)
+    }
+
+    {/*const { data, error } = useSWR('http://127.0.0.1:5000/cards')
     const [cardsSelected, setCardsSelected] = useState(true)
     if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
+    if (!data) return <div>loading...</div>*/}
 
     return (
         <>
@@ -23,7 +38,7 @@ const Profile = () => {
                     <div id="settings" className="sm:inline-block text-gray-400 tracking-tight font-semibold w-16 sm:w-32 bg-white sm:pr-4 sm:pl-4 sm:pt-3 sm:pb-3 sm:rounded-full text-base sm:text-lg cursor-pointer sm:bg-gray-100 hover:bg-gray-300">
                         <div className="w-full sm:w-1/2">
                             <svg className="w-5/12 text-gray-400 float-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                                <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
                             </svg>
                         </div>
                         <div className="leading-5 pl-6 hidden sm:block">
@@ -31,8 +46,8 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-1/6">
-                    <img className="rounded-full"
+                <div className="w-5/12 sm:w-1/6">
+                    <img className="rounded-full w-full"
                         src={user.display ? user.display : defaultDisplay} />
                 </div>
                 <h1 className="page-heading text-2xl sm:mb-0 sm:text-5xl">{user.fullName}</h1>
@@ -58,7 +73,7 @@ const Profile = () => {
                     </div>
                 </div>
                 {cardsSelected && (<div id="cards" className="feed mt-6 md:mt-8 sm:mt-8 w-300px sm:w-1/2">
-                    {data.map((card, index) => {
+                    {cards.map((card, index) => {
                         return (
                             <div id="card" key={index} className="flex flex-row mb-8 w-full justify-center">
                                 {/* //TODO: add images  */}
@@ -71,7 +86,8 @@ const Profile = () => {
                                 <div>
                                     <div className="flex flex-row items-center justify-between sm:w-96">
                                         <div className="leading-2">
-                                            <Link className="hover:text-yellow-400" to='/card-details'>
+                                            <Link onClick={() => {selectCard(card)}}
+                                                className="hover:text-yellow-400" to='/card-details'>
                                                 <h4 className="text-lg sm:text-xl font-semibold">{card.name}</h4>
                                             </Link>
                                         </div>

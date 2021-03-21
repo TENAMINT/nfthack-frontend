@@ -60,8 +60,8 @@ const Profile = () => {
                     <img className="m-auto w-3/4 sm:w-full"
                          src={defaultDisplay} />
                 </div>
-                <h1 className="text-2xl font-semibold sm:mb-0 sm:text-5xl w-300px text-center sm:w-full">{ card.name }</h1>
-                <h2 className="flex flex-col text-sm font-semibold sm:text-2xl w-2/3 sm:w-1/2 text-center mt-2">
+                <h1 className="text-2xl sm:text-3xl font-semibold sm:mb-0 w-300px text-center sm:w-1/3">{ card.name }</h1>
+                <h2 className="text-sm sm:text-base flex flex-col font-semibold w-2/3 sm:w-1/4 text-center mt-2">
                     { card.year } { card.brand } { card.name } { card.description } / {card.gradeCompany} { card.grade}
                 </h2>
 

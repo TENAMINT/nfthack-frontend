@@ -14,7 +14,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import SubmitCard from "./pages/session/SubmitCard"
 import Profile from "./pages/session/Profile"
 import CardView from "./pages/session/CardView"
-import CardListing from "./pages/session/CardListing";
+import CardListing from "./pages/session/CardListing"
+import Logout from "./pages/session/Logout"
 
 /* Components */
 import Navbar from './components/Navbar'
@@ -39,6 +40,7 @@ function App() {
                         <Route path='/card-details' exact component={CardView} />
                         <Route path='/card-listing' exact component={CardListing} />
                         <Route path='/profile' exact component={Profile} />
+                        <Route path='/logout' exact component={Logout} />
                     </Switch>
                 </div>
                 <Footer />
