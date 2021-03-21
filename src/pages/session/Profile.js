@@ -50,7 +50,7 @@ const Profile = () => {
                                     ${!cardsSelected ? 'bg-white' : 'text-gray-300'}`}
                         onClick={() => {setCardsSelected(false)}}
                     >
-                        Photos
+                        Portfolio
                     </div>
                 </div>
                 {cardsSelected && (<div id="cards" className="feed mt-6 md:mt-8 sm:mt-8 w-300px sm:w-1/2">
@@ -72,14 +72,14 @@ const Profile = () => {
                                     <p className="text-xs sm:text-sm sm:text-base">
                                         {card.description.substring(0, minExcerptChars)}
                                         {card.description.length > minExcerptChars ? '...' : ''}
-                                    </p>
+                                    </p>-
                                 </div>
                             </div>
                         )
                     })}
                 </div>)}
                 {!cardsSelected && (<div id="photos" className="feed mt-6 sm:mt-8 w-300px sm:w-1/2 text-center">
-                    Photos
+                    History
                 </div>)}
             </div>
         </>
