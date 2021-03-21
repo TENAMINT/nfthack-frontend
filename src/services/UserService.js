@@ -11,7 +11,20 @@ module.exports = {
               headers: { 'Content-Type': 'application/json' }
             });
 
-            return result.json();
+            if (result.status === 201) {
+              return result.json();
+            }
         },
+        submit: async (card) => {
+            const submitUrl = new URL('/card/submit', API_URL);
+
+            const result = await fetch(submitUrl.href, {
+              method: 'POST',
+              body: JSON.stringify(card),
+              headers: { 'Content-Type': 'application/json' }
+            });
+
+            return result.json();
+        }
     },
 };

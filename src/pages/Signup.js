@@ -1,14 +1,15 @@
 import React, { useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useStoreState, useStoreActions } from 'easy-peasy';
 
 
 const SignupStep2 = () => {
     const mnemonic = useStoreState(state => state.user.mnemonic);
+    const history = useHistory();
 
     const registerWallet = useStoreActions(actions => actions.registerWallet);
     const onSubmitClick = useCallback(
-        () => registerWallet().catch((error) => console.error(error)),
+        () => registerWallet().then(() => history.push('/')).catch((error) => console.error(error)),
         [registerWallet],
     );
 
@@ -16,9 +17,7 @@ const SignupStep2 = () => {
          <div className="input-container flex flex-col justify-center items-center mt-0">
             <h1 className="page-heading">Copy your Recovery Phrase</h1>
             <h3>Put this somewhere safe, it is the only way to recover a lost account:</h3>
-            <textarea id="fullName" name="fullName" type="text">
-              {mnemonic}
-            </textarea>
+            <textarea id="fullName" name="fullName" type="text" defaultValue={mnemonic} />
             <button className="default-btn w-11/12 sm:w-1/3 mt-10 theme-color text-base sm:text-xl" onClick={onSubmitClick}>I've copied it down in a safe place</button>
         </div>
     );

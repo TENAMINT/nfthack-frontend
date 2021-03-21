@@ -12,25 +12,16 @@ export default {
         email: 'victoria@gmail.com',
         password: '123',
         mnemonic: '',
+        card: {
+          name: 'Lebron James Cavaliers',
+          brand: 'Topps Collection',
+          year: 2003,
+          description: 'RC Rookie',
+          gradeCompany: 'PSA',
+          grade: 10,
+        },
     },
-    profile: {
-        mantra: 'A mantra goes here',
-        display: 'https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255532-stock-illustration-profile-placeholder-male-default-profile.jpg',
-        posts: [
-            {
-                title: 'Header',
-                display: '',
-                content: 'He\'ll want to use your yacht, and I don\'t want this thing smelling like fish',
-                timestamp: new Date().getDay()-1
-            },
-            {
-                title: 'Header',
-                display: '',
-                content: 'He\'ll want to use your yacht, and I don\'t want this thing smelling like fish',
-                timestamp: new Date().getDay()-1
-            }
-        ]
-    },
+    cards: [],
 
     // Thunks
     registerUser: thunk(async (actions, payload, { getStoreState }) => {
@@ -43,9 +34,10 @@ export default {
     registerWallet: thunk(async (actions, payload, { getStoreState }) => {
         const state = getStoreState();
 
-        const user = await userService.register({ step: 1, ...state.user });
+        await userService.register({ step: 1, ...state.user });
 
-        actions.updateUser(user);
+        // TODO: Proper login authentication
+        actions.updateUser({ auth: true, ...state.user });
     }),
 
     // Actions
@@ -63,5 +55,40 @@ export default {
     updateUser: action((state, payload) => {
         console.log('USER', payload);
         state.user = { ...payload };
+    }),
+
+
+    submitCard: thunk(async (actions, payload) => {
+        const card = await userService.submit(payload);
+
+        actions.addCard(card);
+    }),
+
+    addCard: action((state, payload) => {
+        state.cards.push(payload);
+    }),
+
+    updateCardName: action((state, payload) => {
+        state.user.card.name = payload;         
+    }),
+
+    updateCardBrand: action((state, payload) => {
+        state.user.card.brand = payload;         
+    }),
+
+    updateCardYear: action((state, payload) => {
+        state.user.card.year = payload;         
+    }),
+
+    updateCardDescription: action((state, payload) => {
+        state.user.card.description = payload;         
+    }),
+
+    updateCardGradeCompany: action((state, payload) => {
+        state.user.card.gradeCompany = payload;         
+    }),
+
+    updateCardGrade: action((state, payload) => {
+        state.user.card.grade = payload;         
     }),
 }
