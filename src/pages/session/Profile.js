@@ -63,7 +63,7 @@ const Profile = () => {
                                     </svg>
                                 </div>
                                 <div>
-                                    <div className="flex flex-row items-center justify-between">
+                                    <div className="flex flex-row items-center justify-between sm:w-96">
                                         <div className="leading-2">
                                             <h4 className="text-lg sm:text-xl font-semibold">{card.name}</h4>
                                         </div>

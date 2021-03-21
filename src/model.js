@@ -39,6 +39,14 @@ export default {
             description: 'RC Rookie',
             gradeCompany: 'PSA',
             grade: 10,
+        },
+        {
+            name: 'Some random card here i dont know woah',
+            brand: 'Topps Collection',
+            year: 2003,
+            description: 'RC Rookie',
+            gradeCompany: 'PSA',
+            grade: 10,
         }
     ],
 
