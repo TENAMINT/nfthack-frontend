@@ -11,7 +11,7 @@ const Profile = () => {
 
     /* SellMore/BuyBack Shares Data */
     const marketValue = "402,755"
-    const percentSold = "43"
+    const numberOfShares = "570,000"
     const royaltiesEarned = "126,400"
 
     const [sellMore, setSellMoreSelected] = useState(true)
@@ -42,8 +42,8 @@ const Profile = () => {
                     <div className="w-1/2 text-right">${marketValue}</div>
                 </div>
                 <div className="flex flex-row text-center">
-                    <div className="w-1/2 text-left">% of Card Sold: </div>
-                    <div className="w-1/2 text-right">{percentSold}%</div>
+                    <div className="w-1/2 text-left"># of Shares: </div>
+                    <div className="w-1/2 text-right">{numberOfShares}%</div>
                 </div>
                 <div className="flex flex-row text-center">
                     <div className="w-1/2 text-left">Royalties Earned: </div>
