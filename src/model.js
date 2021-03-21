@@ -5,71 +5,8 @@ import { userService } from './services/UserService';
 // We are using easy-peasy state management, doc here: https://easy-peasy.now.sh/
 export default {
     // States
-    user: {
-        auth: true, /* prototype: will enable session navbar */
-        token: '123',
-        fullName: "Victoria Robertson",
-        email: 'victoria@gmail.com',
-        password: '123',
-        mnemonic: '',
-        mantra: 'A mantra goes here',
-        display: '', /* profile pic */
-        card: {
-          name: 'Lebron James Cavaliers',
-          brand: 'Topps Collection',
-          year: 2003,
-          description: 'RC Rookie',
-          gradeCompany: 'PSA',
-          grade: 10,
-        },
-    },
-    selectedCard: {
-        address: 0,
-        name: 'Tom Brady',
-        brand: 'Topps Collection',
-        year: 2003,
-        description: 'RC Rookie',
-        gradeCompany: 'PSA',
-        grade: 10,
-    },
-    cards: [
-        {
-            address: 0,
-            name: 'Lebron James Cavaliers',
-            brand: 'Topps Collection',
-            year: 2003,
-            description: 'RC Rookie',
-            gradeCompany: 'PSA',
-            grade: 10,
-        },
-        {
-            address: 1,
-            name: 'Lebron James Cavaliers 2',
-            brand: 'Topps Collection',
-            year: 2003,
-            description: 'RC Rookie',
-            gradeCompany: 'PSA',
-            grade: 10,
-        },
-        {
-            address: 2,
-            name: 'Some random card here i dont know woah',
-            brand: 'Topps Collection',
-            year: 2003,
-            description: 'RC Rookie',
-            gradeCompany: 'PSA',
-            grade: 10,
-        },{
-            address: 3,
-            images:"https://dw7591lwb84er.cloudfront.net/eyJpdiI6IjZQNnRhSmxLS1J0QzI1N212VFlHbFE9PSIsInZhbHVlIjoiQTliV2lBTkljOWtLaGVBT0Z0cWEvazdPZ3V3YU50SnFUMGZiTHh3OWJMNW0xcXFKNXcrY1FLMEpLbWI0Q0xTeEZGb21PMEJoaThrYnplcVdUT1o4SFE9PSIsIm1hYyI6ImQzYWQ4ZTU3MzAzOTllZTY2MmQ5MWZmNmI5N2ZlNjFlODEzNzE4M2I3MGJjYjkxMmRkYmNkMWZhMTk3N2E1ZDMifQ==",
-            name: '1999 base 1st edition',
-            brand: 'Becket',
-            year: 1996,
-            description: 'Charizard',
-            gradeCompany: 'Beckett',
-            grade: 9.5
-        }
-    ],
+    user:{},
+    selectedCard:{},
 
     // Thunks
     registerUser: thunk(async (actions, payload, { getStoreState }) => {
@@ -105,7 +42,6 @@ export default {
         state.user = { ...payload };
     }),
 
-
     submitCard: thunk(async (actions, payload) => {
         const card = await userService.submit(payload);
 
@@ -116,27 +52,4 @@ export default {
         state.cards.push(payload);
     }),
 
-    updateCardName: action((state, payload) => {
-        state.user.card.name = payload;
-    }),
-
-    updateCardBrand: action((state, payload) => {
-        state.user.card.brand = payload;
-    }),
-
-    updateCardYear: action((state, payload) => {
-        state.user.card.year = payload;
-    }),
-
-    updateCardDescription: action((state, payload) => {
-        state.user.card.description = payload;
-    }),
-
-    updateCardGradeCompany: action((state, payload) => {
-        state.user.card.gradeCompany = payload;
-    }),
-
-    updateCardGrade: action((state, payload) => {
-        state.user.card.grade = payload;
-    }),
 }
