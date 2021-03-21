@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useStoreState } from 'easy-peasy'
 import { Link } from 'react-router-dom'
 import useSWR from 'swr'
-import { Img } from 'react-image'
 import defaultDisplay from '../../images/default_display.jpg'
 
 /* Vars */

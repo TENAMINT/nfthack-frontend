@@ -5,7 +5,9 @@ import { userService } from './services/UserService';
 // We are using easy-peasy state management, doc here: https://easy-peasy.now.sh/
 export default {
     // States
-    user:{},
+    user:{
+        mnemonic: ""
+    },
     selectedCard:{},
 
     // Thunks
