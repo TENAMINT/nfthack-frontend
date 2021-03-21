@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useStoreState } from 'easy-peasy'
-
+import useSWR from 'swr'
+import { Img } from 'react-image'
 import defaultDisplay from '../../images/default_display.jpg'
 
 /* Vars */
@@ -8,9 +9,12 @@ const minExcerptChars = 80
 
 const Profile = () => {
     const user = useStoreState(state => state.user)
-    const cards = useStoreState(state => state.cards)
+    // const cards = useStoreState(state => state.cards)
 
+    const { data, error } = useSWR('http://127.0.0.1:5000/cards')
     const [cardsSelected, setCardsSelected] = useState(true)
+    if (error) return <div>failed to load</div>
+    if (!data) return <div>loading...</div>
 
     return (
         <>
@@ -29,10 +33,10 @@ const Profile = () => {
                 </div>
                 <div className="w-1/6">
                     <img className="rounded-full"
-                         src={user.display ? user.display : defaultDisplay} />
+                        src={user.display ? user.display : defaultDisplay} />
                 </div>
-                <h1 className="page-heading text-2xl sm:mb-0 sm:text-5xl">{ user.fullName }</h1>
-                <h2 className="text-xl sm:text-2xl">{ user.mantra }</h2>
+                <h1 className="page-heading text-2xl sm:mb-0 sm:text-5xl">{user.fullName}</h1>
+                <h2 className="text-xl sm:text-2xl">{user.mantra}</h2>
 
                 <div className="flex flex-row justify-center align-middle flex-initial
                                 p-1 rounded-full mt-8 bg-gray-100 theme-text-color font-semibold text-center
@@ -41,25 +45,27 @@ const Profile = () => {
                     <div
                         className={`w-1/2 rounded-full p-3 sm:p-4 hover:bg-white hover:text-yellow-300 cursor-pointer
                                     ${cardsSelected ? 'bg-white' : 'text-gray-300'}`}
-                        onClick={() => {setCardsSelected(true)}}
+                        onClick={() => { setCardsSelected(true) }}
                     >
                         Portfolio
                     </div>
                     <div
                         className={`w-1/2 rounded-full p-3 sm:p-4 hover:bg-white hover:text-yellow-300 cursor-pointer
                                     ${!cardsSelected ? 'bg-white' : 'text-gray-300'}`}
-                        onClick={() => {setCardsSelected(false)}}
+                        onClick={() => { setCardsSelected(false) }}
                     >
                         History
                     </div>
                 </div>
                 {cardsSelected && (<div id="cards" className="feed mt-6 md:mt-8 sm:mt-8 w-300px sm:w-1/2">
-                    {cards.map((card, index) => {
+                    {data.map((card, index) => {
                         return (
                             <div id="card" key={index} className="flex flex-row mb-8 w-full justify-center">
+                                {/* //TODO: add images  */}
+                                {/* <img className="w-1/12" src={card.img} alt="Display" /> */}
                                 <div className="rounded mr-5">
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="50" height="50" rx="8" fill="#F6F6F6"/>
+                                        <rect width="50" height="50" rx="8" fill="#F6F6F6" />
                                     </svg>
                                 </div>
                                 <div>
